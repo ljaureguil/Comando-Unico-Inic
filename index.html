@@ -35,43 +35,50 @@
  .clinks{
    position: absolute;
       appearance: img;
-      width: 160px;
-      height:160px;
+      width: 180px;
+      height:180px;
       font-size: 30px;
       background: #201010;
       color:white;
-      margin:30px;
+    //  margin:30px;
       border-radius:10px;
+      border-width:4px;
       border-style: groove;
       box-shadow:  -5x 5px  30px 4px white;
     
     }
     #re{
       top:5%;
-      left:2%;
+      right:2%;
    
     }
     #ins{
       top:5%;
-      right:2%;
+     left:2%;
     }
     #fa{
-      bottom:5%;
-      left:2%;
+      bottom:8%;
+      right:2%;
     }
 
     #yo{
-      bottom:5%;
-      right:2%;
+      bottom:8%;
+      left:2%;
     }
-
+    #logo{
+        position:absolute;
+        width:80%;
+        height:30%;
+        left:10%;
+        top:33%;
+    }
 
 
     </style>
     <div id="todo">
- 
+ <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_3f8b45c59ddc4ed1b5396f8d76ed1f95~mv2.png">
 
-  <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_ce7b5bbb197a491982bbd6798290d165~mv2.png"></a>
+  <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_6cfdc6156479444b90c703994c7f02c6~mv2.jpg"></a>
 
 <a  href="https://www.instagram.com/comandounico/" target="_blank"><img  id="ins" class="clinks" src="https://pbs.twimg.com/profile_images/830167204243075072/DLv9uyEt.jpg"></a><br><br>
 <a href="https://m.facebook.com/comando.unico.5" target="_blank"><img id="fa"  class="clinks" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Facebook_Logo.png"></a><br><br>
@@ -86,7 +93,27 @@
  
   <script id="ss"></script>
     <script>
- 
+    var h=window.innerHeight;
+    var w=window.innerWidth;
+    var s=4*w/100, c=8*w/100,a=(w-2*s-c)/2,b=(h-2*s-c)/2, m=a;
+    if(w>h) m=b;
+    var er=document.getElementById("re"),
+   ef=document.getElementById("fa"),
+    ei=document.getElementById("ins"),
+    ey=document.getElementById("yo");
+  
+ // er.style.top=s+"px";er.style.right=s+"px";
+  er.style.width=m+"px";er.style.height=m+"px";
+ // ei.style.top=s+"px";ei.style.left=s+"px";
+  ei.style.width=m+"px";ei.style.height=m+"px";
+ //  ef.style.bottom=s+"px";er.style.right=s+"px";
+   ef.style.width=m+"px";ef.style.height=m+"px";
+ // ey.style.bottom=s+"px";ey.style.left=s+"px";
+  ey.style.width=m+"px";ey.style.height=m+"px";
+
+    
+//    alert(s);
+ //alert(b);
 function sendInfo() {
     alert(etinfo.value)
 
