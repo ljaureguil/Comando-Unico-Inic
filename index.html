@@ -13,28 +13,17 @@
            overflow: auto;
         position:relative;
         border-radius: 10px;
-        border-style:double;
-        border-color: rgb(0, 255, 242);
+    //    border-style:double;
+    //    border-color: red;//rgb(0, 255, 242);
         border-width: 3px;
            height:100%;
            width:100%;
-           background-image:
-	   -webkit-linear-gradient(-45deg, 
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top, 
-	                           rgba(255, 255, 255, .25), 
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
 
-    border-radius: 5px; 
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-                      background-size: 100% 100%;
     }
 
  .clinks{
    position: absolute;
-      appearance: img;
+  //    appearance: img;
       width: 180px;
       height:180px;
       font-size: 30px;
@@ -42,10 +31,10 @@
       color:white;
     //  margin:30px;
       border-radius:10px;
-      border-width:4px;
-      border-style: groove;
-      box-shadow:  -5x 5px  30px 4px white;
-    
+     border-width:4px;
+     border-style: groove;
+      box-shadow:  -15px 15px  20px 1px rgba(70,70,80,.8);
+       appearance: button;
     }
     #re{
       top:5%;
@@ -67,16 +56,32 @@
     }
     #logo{
         position:absolute;
-        width:80%;
-        height:30%;
-        left:10%;
+        width:100%;
+        height:40%;
+        left:0%;
+        top:30%;
+    }
+    #lauro{
+        position:absolute;
         top:33%;
+        right:1%;
+        font-size:30px;
+    //    font-weight:bold;        
+    }
+    #andres{
+        position:absolute;
+        bottom:32%;
+        left:1%;
+        font-size:30px;
+    //    font-weight:bold;
     }
 
 
     </style>
     <div id="todo">
- <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_3f8b45c59ddc4ed1b5396f8d76ed1f95~mv2.png">
+    <p id="lauro">(209) 665 8321</p>
+    <p id="andres"> (209) 328 3500</p>
+ <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png">
 
   <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_6cfdc6156479444b90c703994c7f02c6~mv2.jpg"></a>
 
@@ -93,6 +98,49 @@
  
   <script id="ss"></script>
     <script>
+    //https://jsonblob.com/2bad0b59-8756-11eb-8336-5f88ff6e4863
+   // genId();
+   obj={};
+    
+    var idl=localStorage.getItem("id");
+    if(idl===null){
+        var ti=genId();
+        GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
+            obj=r;
+       //     alert(JSON.stringify(obj))
+         //   alert(obj.usuarios)
+            ti+="-"+obj.usuarios.length;
+            var visitas=[];
+         //   vob={fecha:new Date().toString()+"_"+obj.usuarios.length};
+            visitas.push(new Date().toString())
+            var usu={};
+            usu.name=ti+obj;
+            usu.visitas=visitas;
+     
+            obj.usuarios.push(usu);
+            
+       //     alert(ti);
+        });
+    }
+    else{
+           GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
+            obj=r;
+            for(var i=0;i<obj.usuarios.length;i++){
+                if(idl===obj.usuarios[i].name){
+                    
+                  
+                  
+                    
+                    
+                    obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
+                    i=obj.usuarios.length;
+                }
+            }
+           
+        });     
+        
+    }
+    
     var h=window.innerHeight;
     var w=window.innerWidth;
     var s=4*w/100, c=8*w/100,a=(w-2*s-c)/2,b=(h-2*s-c)/2, m=a;
@@ -101,14 +149,9 @@
    ef=document.getElementById("fa"),
     ei=document.getElementById("ins"),
     ey=document.getElementById("yo");
-  
- // er.style.top=s+"px";er.style.right=s+"px";
-  er.style.width=m+"px";er.style.height=m+"px";
- // ei.style.top=s+"px";ei.style.left=s+"px";
+   er.style.width=m+"px";er.style.height=m+"px";
   ei.style.width=m+"px";ei.style.height=m+"px";
- //  ef.style.bottom=s+"px";er.style.right=s+"px";
    ef.style.width=m+"px";ef.style.height=m+"px";
- // ey.style.bottom=s+"px";ey.style.left=s+"px";
   ey.style.width=m+"px";ey.style.height=m+"px";
 
     
@@ -139,7 +182,7 @@ callback(xhttp.responseText);
         var xhr  = new XMLHttpRequest()
         xhr.open('GET', url+'/1', true)
         xhr.onload = function () {
-            alert(xhr.responseText)
+   //         alert(xhr.responseText)
           var users = JSON.parse(xhr.responseText);
           if (xhr.readyState == 4 && xhr.status == "200") {
           //	console.table(users);
@@ -150,7 +193,40 @@ callback(xhttp.responseText);
         }
         xhr.send(null);
         }
+        
+        function genId(){
+            var c="abcdefghijklmnopqrstuvwxyz0123456789"+"!@#$%^&*()_+-="+"abcdefghijklmnopqrstuvwxyz0123456789"+"abcdefghijklmnopqrstuvwxyz0123456789";
+            var f=new Date();
+                var y=f.getYear()+"",mo=f.getMonth(),d=f.getDate(),h=f.getHours(),m=f.getMinutes(),s=f.getSeconds();
+       //     alert(y+"\n"+mo+"\n"+d+"\n"+h+"\n"+m+"\n"+s);
+             y=(y[1]+y[2])*1
+         var r=c[y]+c[mo]+c[d]+c[h]+c[m]+c[s];
+       
+            return r;
+            }
+        
+            
+        
+        
+        
+        /*
+        
+                  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
 
+    border-radius: 5px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+                      background-size: 100% 100%; 
+        */
+        
+        
+        
     </script>
     <body>
     </html>
