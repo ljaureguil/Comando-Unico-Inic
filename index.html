@@ -114,21 +114,21 @@
             for(var i=0;i<obj.usuarios.length;i++){
                 if(idl===obj.usuarios[i].name){
                     
-       //           alert(idl)
+       //           (idl)
                  var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
              obj.visitas.push(obj.visitas.length+" "+visita+". By: "+obj.usuarios[i].name)  
                  obj.usuarios[i].visitas.push(visita);   
-       //            alert(JSON.stringify(obj)); 
+       //            (JSON.stringify(obj)); 
               UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
             
                    
            //         obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
                     i=obj.usuarios.length;
                 }
-              //  else{alert(i);
+              //  else{(i);
                
                 }   
-                  //   if(i===obj.usuarios.length-1){ create();alert("ok");}
+                  //   if(i===obj.usuarios.length-1){ create();("ok");}
                    // };
     
            
@@ -139,8 +139,8 @@
            var ti=genId();
         GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
-     //       alert(JSON.stringify(obj))
-         //   alert(obj.usuarios)
+     //       (JSON.stringify(obj))
+         //   (obj.usuarios)
          //   ti+="-"+obj.usuarios.length;
            
             var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
@@ -151,7 +151,7 @@
             usu.visitas=[visita];
              obj.usuarios.push(usu);
              obj.visitas.push(obj.visitas.length+" "+visita+". By: "+usu.name)        
-     //  alert(JSON.stringify(obj));
+     //  (JSON.stringify(obj));
        UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
         localStorage.setItem("id",usu.name);
         
@@ -173,13 +173,13 @@
   ey.style.width=m+"px";ey.style.height=m+"px";
 
     
-//    alert(s);
- //alert(b);
+//    (s);
+ //(b);
 function sendInfo() {
-    alert(etinfo.value)
+    (etinfo.value)
 
     GetJ("https://jsonblob.com/api/8f47c124-2c42-11eb-935b-f1e9d15679db",function(o){
-     alert(o)
+     (o)
 
 
     })
@@ -200,7 +200,7 @@ callback(xhttp.responseText);
         var xhr  = new XMLHttpRequest()
         xhr.open('GET', url+'/1', true)
         xhr.onload = function () {
-   //         alert(xhr.responseText)
+   //         (xhr.responseText)
           var users = JSON.parse(xhr.responseText);
           if (xhr.readyState == 4 && xhr.status == "200") {
           //	console.table(users);
@@ -216,18 +216,18 @@ callback(xhttp.responseText);
 // Update a user
 function UpdateJ(url,ob,callback) {//prompt(JSON.stringify(ob))
     var json = JSON.stringify(ob);//JSON.stringify(data);
-//alert("this will be sent: \n\n"+otot(ob))
+//("this will be sent: \n\n"+otot(ob))
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", url+'/12', true);
 xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
 xhr.onload = function () {
 	var users = JSON.parse(xhr.responseText);
 	if (xhr.readyState == 4 && xhr.status == "200") {
-	 //  alert(xhr.responseText)
- //   alert("Done...\n\nWait a few seconds and press refresh to check changes.")
+	 //  (xhr.responseText)
+ //   ("Done...\n\nWait a few seconds and press refresh to check changes.")
 //	callback(users);
 	} else {
-		alert(users);
+		(users);
 	}
 }
 xhr.send(json);
@@ -238,7 +238,7 @@ xhr.send(json);
             var c="abcdefghijklmnopqrstuvwxyz0123456789"+"!@#$%^&*()_+-="+"abcdefghijklmnopqrstuvwxyz0123456789"+"abcdefghijklmnopqrstuvwxyz0123456789";
             var f=new Date();
                 var y=f.getYear()+"",mo=f.getMonth(),d=f.getDate(),h=f.getHours(),m=f.getMinutes(),s=f.getSeconds();
-       //     alert(y+"\n"+mo+"\n"+d+"\n"+h+"\n"+m+"\n"+s);
+       //     (y+"\n"+mo+"\n"+d+"\n"+h+"\n"+m+"\n"+s);
              y=(y[1]+y[2])*1
          var r=c[y]+c[mo]+c[d]+c[h]+c[m]+c[s];
        
