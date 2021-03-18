@@ -1,7 +1,278 @@
 <html>
     <body>
     <style>
+    body{<html>
+    <body>
+    <style>
     body{
+        background:white;
+     //   text-align: center;
+      
+        
+        }
+
+    #todo{
+
+           overflow: auto;
+        position:relative;
+        border-radius: 10px;
+    //    border-style:double;
+    //    border-color: red;//rgb(0, 255, 242);
+        border-width: 3px;
+           height:100%;
+           width:100%;
+
+    }
+
+ .clinks{
+   position: absolute;
+  //    appearance: img;
+      width: 180px;
+      height:180px;
+      font-size: 30px;
+      background: #201010;
+      color:white;
+    //  margin:30px;
+      border-radius:10px;
+     border-width:4px;
+     border-style: groove;
+      box-shadow:  -30px 60px  40px 1px rgba(70,70,80,.8);
+       appearance: button;
+    }
+    #re{
+      top:5%;
+      right:2%;
+   
+    }
+    #ins{
+      top:5%;
+     left:2%;
+    }
+    #fa{
+      bottom:8%;
+      right:2%;
+    }
+
+    #yo{
+      bottom:8%;
+      left:2%;
+    }
+    #logo{
+        position:absolute;
+        width:100%;
+        height:40%;
+        left:0%;
+        top:30%;
+    }
+    #lauro{
+        position:absolute;
+        top:33%;
+        right:1%;
+        font-size:60px;
+    //    font-weight:bold;        
+    }
+    #andres{
+        position:absolute;
+        bottom:32%;
+        left:1%;
+        font-size:60px;
+    //    font-weight:bold;
+    }
+
+
+    </style>
+    <div id="todo">
+    <p id="lauro">(209) 665 8321</p>
+    <p id="andres"> (209) 328 3500</p>
+ <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png">
+
+  <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_6cfdc6156479444b90c703994c7f02c6~mv2.jpg"></a>
+
+<a  href="https://www.instagram.com/comandounico/" target="_blank"><img  id="ins" class="clinks" src="https://pbs.twimg.com/profile_images/830167204243075072/DLv9uyEt.jpg"></a><br><br>
+<a href="https://m.facebook.com/comando.unico.5" target="_blank"><img id="fa"  class="clinks" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Facebook_Logo.png"></a><br><br>
+<a href="https://youtube.com/channel/UCOpZB5LWTqmWUi3JbCu8U-g" target="_blank"><img id="yo"  class="clinks" src="https://cdn.mos.cms.futurecdn.net/T3WPQpG2jcbDvaVpdLhbvh-1200-80.jpg"></a><br><br>
+ 
+<div id="manage" style="display:none">
+        <textarea id="tinfo" placeholder="Deja tu informacion aqui..."></textarea>
+        <button id="bsend"  onclick="sendInfo();einfo.style.display='none';econf.style.display='none'">Mandar Informacion</button>
+        <button onclick="einfo.style.display='none';econf.style.display='none'">Salir</button>"
+    </div>
+   </div>
+ 
+  <script id="ss"></script>
+    <script>
+    //https://jsonblob.com/2bad0b59-8756-11eb-8336-5f88ff6e4863
+   // genId();
+   obj={};
+    
+    var idl=localStorage.getItem("id");
+    if(idl===null){
+     create();
+    }
+    else{
+        
+           GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
+            obj=r;
+            if(obj.usuarios.length===0 ) create();
+            for(var i=0;i<obj.usuarios.length;i++){
+                if(idl===obj.usuarios[i].name){
+                    
+       //           (idl)
+                 var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
+             obj.visitas.push(obj.visitas.length+" "+visita+". By: "+obj.usuarios[i].name)  
+                 obj.usuarios[i].visitas.push(visita);   
+       //            (JSON.stringify(obj)); 
+              UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
+            
+                   
+           //         obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
+                    i=obj.usuarios.length;
+                }
+              //  else{(i);
+               
+                }   
+                  //   if(i===obj.usuarios.length-1){ create();("ok");}
+                   // };
+    
+           
+        });     
+        
+    }
+    function create(){
+           var ti=genId();
+        GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
+            obj=r;
+     //       (JSON.stringify(obj))
+         //   (obj.usuarios)
+         //   ti+="-"+obj.usuarios.length;
+           
+            var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
+   
+            var usu={};
+            usu.name=ti+"-"+obj.usuarios.length;
+            usu.created=new Date().toString();
+            usu.visitas=[visita];
+             obj.usuarios.push(usu);
+             obj.visitas.push(obj.visitas.length+" "+visita+". By: "+usu.name)        
+     //  (JSON.stringify(obj));
+       UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
+        localStorage.setItem("id",usu.name);
+        
+        
+        });   
+    }
+    
+    var h=window.innerHeight;
+    var w=window.innerWidth;
+    var s=4*w/100, c=8*w/100,a=(w-2*s-c)/2,b=(h-2*s-c)/2, m=a;
+    if(w>h) m=b;
+    var er=document.getElementById("re"),
+   ef=document.getElementById("fa"),
+    ei=document.getElementById("ins"),
+    ey=document.getElementById("yo");
+   er.style.width=m+"px";er.style.height=m+"px";
+  ei.style.width=m+"px";ei.style.height=m+"px";
+   ef.style.width=m+"px";ef.style.height=m+"px";
+  ey.style.width=m+"px";ey.style.height=m+"px";
+
+    
+//    (s);
+ //(b);
+function sendInfo() {
+    (etinfo.value)
+
+    GetJ("https://jsonblob.com/api/8f47c124-2c42-11eb-935b-f1e9d15679db",function(o){
+     (o)
+
+
+    })
+}
+
+function loadDoc(url,callback) {
+  var xhttp = new XMLHttpRequest();
+  
+  xhttp.open("GET", url, false);
+  xhttp.send();
+callback(xhttp.responseText);
+
+}
+
+  function GetJ(url,callback) {
+            
+        //var url  = "http://localhost:8080/api/v1/users";
+        var xhr  = new XMLHttpRequest()
+        xhr.open('GET', url+'/1', true)
+        xhr.onload = function () {
+   //         (xhr.responseText)
+          var users = JSON.parse(xhr.responseText);
+          if (xhr.readyState == 4 && xhr.status == "200") {
+          //	console.table(users);
+          callback(users);
+          } else {
+            console.error(users);
+          }
+        }
+        xhr.send(null);
+        }
+        
+      
+// Update a user
+function UpdateJ(url,ob,callback) {//prompt(JSON.stringify(ob))
+    var json = JSON.stringify(ob);//JSON.stringify(data);
+//("this will be sent: \n\n"+otot(ob))
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", url+'/12', true);
+xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+xhr.onload = function () {
+	var users = JSON.parse(xhr.responseText);
+	if (xhr.readyState == 4 && xhr.status == "200") {
+	 //  (xhr.responseText)
+ //   ("Done...\n\nWait a few seconds and press refresh to check changes.")
+//	callback(users);
+	} else {
+		(users);
+	}
+}
+xhr.send(json);
+}  
+        
+        
+        function genId(){
+            var c="abcdefghijklmnopqrstuvwxyz0123456789"+"!@#$%^&*()_+-="+"abcdefghijklmnopqrstuvwxyz0123456789"+"abcdefghijklmnopqrstuvwxyz0123456789";
+            var f=new Date();
+                var y=f.getYear()+"",mo=f.getMonth(),d=f.getDate(),h=f.getHours(),m=f.getMinutes(),s=f.getSeconds();
+       //     (y+"\n"+mo+"\n"+d+"\n"+h+"\n"+m+"\n"+s);
+             y=(y[1]+y[2])*1
+         var r=c[y]+c[mo]+c[d]+c[h]+c[m]+c[s];
+       
+            return r;
+            }
+        
+            
+        
+        
+        
+        /*
+        
+                  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
+
+    border-radius: 5px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+                      background-size: 100% 100%; 
+        */
+        
+        
+        
+    </script>
+    <body>
+    </html>
         background:white;
      //   text-align: center;
       
