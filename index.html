@@ -107,7 +107,7 @@
         var ti=genId();
         GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
-            alert(JSON.stringify(obj))
+     //       alert(JSON.stringify(obj))
          //   alert(obj.usuarios)
          //   ti+="-"+obj.usuarios.length;
            
@@ -119,7 +119,7 @@
             usu.visitas=[visita];
              obj.usuarios.push(usu);
              obj.visitas.push(obj.visitas.length+" "+visita+". By: "+usu.name)        
-       alert(JSON.stringify(obj));
+    //   alert(JSON.stringify(obj));
        UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
         localStorage.setItem("id",usu.name);
         
