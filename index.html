@@ -113,24 +113,14 @@
             if(obj.usuarios.length===0 ) create();
             for(var i=0;i<obj.usuarios.length;i++){
                 if(idl===obj.usuarios[i].name){
-                    
-       //           (idl)
-                 var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
+                   var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
              obj.visitas.push(obj.visitas.length+" "+visita+". By: "+obj.usuarios[i].name)  
-                 obj.usuarios[i].visitas.push(visita);   
-       //            (JSON.stringify(obj)); 
-              UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
-            
-                   
-           //         obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
-                    i=obj.usuarios.length;
+                 obj.usuarios[i].visitas.push(visita); alert(JSON.stringify(obj))  
+                UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj,function(){alert(JSON.stringify(obj))})
+                     i=obj.usuarios.length;
                 }
-              //  else{(i);
-               
+       
                 }   
-                  //   if(i===obj.usuarios.length-1){ create();("ok");}
-                   // };
-    
            
         });     
         
@@ -139,10 +129,7 @@
            var ti=genId();
         GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
-     //       (JSON.stringify(obj))
-         //   (obj.usuarios)
-         //   ti+="-"+obj.usuarios.length;
-           
+            
             var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
    
             var usu={};
