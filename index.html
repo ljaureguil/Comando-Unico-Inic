@@ -33,7 +33,7 @@
       border-radius:10px;
      border-width:4px;
      border-style: groove;
-      box-shadow:  -30px 30px  40px 1px rgba(70,70,80,.8);
+      box-shadow:  -15px 15px  20px 1px rgba(70,70,80,.8);
        appearance: button;
     }
     #re{
@@ -65,24 +65,24 @@
         position:absolute;
         top:33%;
         right:1%;
-        font-size:65px;
+        font-size:30px;
     //    font-weight:bold;        
     }
     #andres{
         position:absolute;
         bottom:32%;
         left:1%;
-        font-size:65px;
+        font-size:30px;
     //    font-weight:bold;
     }
 
 
     </style>
     <div id="todo">
-
- <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png">
     <p id="lauro">(209) 665 8321</p>
     <p id="andres"> (209) 328 3500</p>
+ <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png">
+
   <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_6cfdc6156479444b90c703994c7f02c6~mv2.jpg"></a>
 
 <a  href="https://www.instagram.com/comandounico/" target="_blank"><img  id="ins" class="clinks" src="https://pbs.twimg.com/profile_images/830167204243075072/DLv9uyEt.jpg"></a><br><br>
@@ -107,19 +107,23 @@
         var ti=genId();
         GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
-       //     alert(JSON.stringify(obj))
+            alert(JSON.stringify(obj))
          //   alert(obj.usuarios)
-            ti+="-"+obj.usuarios.length;
-            var visitas=[];
-         //   vob={fecha:new Date().toString()+"_"+obj.usuarios.length};
-            visitas.push(new Date().toString())
+         //   ti+="-"+obj.usuarios.length;
+           
+            var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
+   
             var usu={};
-            usu.name=ti+obj;
-            usu.visitas=visitas;
-     
-            obj.usuarios.push(usu);
-            
-       //     alert(ti);
+            usu.name=ti+"-"+obj.usuarios.length;
+            usu.created=new Date().toString();
+            usu.visitas=[visita];
+             obj.usuarios.push(usu);
+             obj.visitas.push(obj.visitas.length+" "+visita+". By: "+usu.name)        
+       alert(JSON.stringify(obj));
+       UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
+        localStorage.setItem("id",usu.name);
+        
+        
         });
     }
     else{
@@ -128,11 +132,15 @@
             for(var i=0;i<obj.usuarios.length;i++){
                 if(idl===obj.usuarios[i].name){
                     
-                  
-                  
-                    
-                    
-                    obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
+       //           alert(idl)
+                 var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
+             obj.visitas.push(obj.visitas.length+" "+visita+". By: "+obj.usuarios[i].name)  
+                 obj.usuarios[i].visitas.push(visita);   
+       //            alert(JSON.stringify(obj)); 
+              UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
+            
+                   
+           //         obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
                     i=obj.usuarios.length;
                 }
             }
@@ -193,6 +201,28 @@ callback(xhttp.responseText);
         }
         xhr.send(null);
         }
+        
+      
+// Update a user
+function UpdateJ(url,ob,callback) {//prompt(JSON.stringify(ob))
+    var json = JSON.stringify(ob);//JSON.stringify(data);
+//alert("this will be sent: \n\n"+otot(ob))
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", url+'/12', true);
+xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+xhr.onload = function () {
+	var users = JSON.parse(xhr.responseText);
+	if (xhr.readyState == 4 && xhr.status == "200") {
+	 //  alert(xhr.responseText)
+ //   alert("Done...\n\nWait a few seconds and press refresh to check changes.")
+//	callback(users);
+	} else {
+		alert(users);
+	}
+}
+xhr.send(json);
+}  
+        
         
         function genId(){
             var c="abcdefghijklmnopqrstuvwxyz0123456789"+"!@#$%^&*()_+-="+"abcdefghijklmnopqrstuvwxyz0123456789"+"abcdefghijklmnopqrstuvwxyz0123456789";
