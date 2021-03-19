@@ -243,6 +243,7 @@ GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(ob
          //       alert(o.clicks);
                 if(o.clicks===undefined) clicks=[v];
                 else  obj.usuarios[i].clicks.push(v);
+                v=" "+v
                 obj.usuarios[i].visitas[obj.usuarios[i].visitas.length-1]+=v;
                 obj.visitas[obj.visitas.length-1]+=v;
         //    alert(obj.usuarios[i].clicks )
