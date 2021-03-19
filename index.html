@@ -234,36 +234,28 @@ xhr.send(json);
             }
         
         function press(v){
-      /*  
-GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
-  
+      
+GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(obj){
+ 
+            for(var i=0;i<obj.usuarios.length;i++){
+            var o=obj.usuarios[i];
+                if(idl===o.name){
+                
+                if(o.cliks===undefined) obj.usuarios[i].clicks=[v];
+                else  obj.usuarios[i].clicks.push(v);
+           //    alert(obj.usuarios[i].clicks )
+           //     alert (JSON.stringify(obj));
+                    UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
+                 
+                         i=obj.usuarios.length;
+                }
+       
+                }   
 
-       UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj)
-    */
 
+});
 }
-}
-        
-        
-        
-        /*
-        
-                  background-image:
-	   -webkit-linear-gradient(-45deg, 
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top, 
-	                           rgba(255, 255, 255, .25), 
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
-
-    border-radius: 5px; 
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-                      background-size: 100% 100%; 
-        */
-        
-        
-        
+   
     </script>
     <body>
     </html>
