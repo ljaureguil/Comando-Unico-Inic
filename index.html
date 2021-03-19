@@ -101,7 +101,7 @@
     //https://jsonblob.com/2bad0b59-8756-11eb-8336-5f88ff6e4863
    // genId();
    obj={};
-    
+    localStorage.removeItem("id")
     var idl=localStorage.getItem("id");
     if(idl===null){
      create();
@@ -115,7 +115,7 @@
                 if(idl===obj.usuarios[i].name){
                    var visita=new Date().toString();//+"_"+ti+"-"+obj.usuarios.length;
              obj.visitas.push(obj.visitas.length+" "+visita+". By: "+obj.usuarios[i].name)  
-                 obj.usuarios[i].visitas.push(visita); alert(JSON.stringify(obj))  
+                 obj.usuarios[i].visitas.push(visita); //alert(JSON.stringify(obj))  
                 UpdateJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",obj,function(){alert(JSON.stringify(obj))})
                      i=obj.usuarios.length;
                 }
