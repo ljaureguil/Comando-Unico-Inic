@@ -1,11 +1,4 @@
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width" name="theme-color" content="#4285f4">
-    <link rel="shortcut icon" href="https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-9/66105070_2606484239385650_1488724510487085056_n.jpg?_nc_cat=106&_nc_oc=AQnx7XRzS47pDYNv0h-dDfqV4kE07czctw5Vm7DOCPn0EMJa2QGEbh-PAJWE2tmrGyo&_nc_ht=scontent-atl3-1.xx&oh=6f6b09b8d92c3007c254fd5ba07f45d7&oe=5DA91A9C"
-    type="image/x-icon" />
-
-</head> 
     <body>
     <style>
     body{
@@ -18,10 +11,11 @@
     #todo{
 
            overflow: auto;
-       position:relative;
-     
+        position:relative;
         border-radius: 10px;
-          border-width: 3px;
+    //    border-style:double;
+    //    border-color: red;//rgb(0, 255, 242);
+        border-width: 3px;
            height:100%;
            width:100%;
 
@@ -82,25 +76,15 @@
     //    font-weight:bold;
     }
 
-#vid{
-    position:absolute;
-    width:100%;
-    height: -1;
- //  z-index: -1;
-   top:0%;
-   left: 0%;
-}
-    </style>
-  <video id="vid" src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4'  autoplay></video>
 
+    </style>
     <div id="todo">
 
-
- <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png" onclick="vid.play()">
+ <img id="logo" src="https://static.wixstatic.com/media/4ee8f5_66b649ad3d70492fae2616d591c232df~mv2.png">
     <p id="lauro">(209) 665 8321</p>
     <p id="andres"> (209) 328 3500</p>
   <a  href="https://lrjauregui4.wixsite.com/comandounicorep" target="_blank"><img id="re"  class="clinks" src="https://static.wixstatic.com/media/4ee8f5_6cfdc6156479444b90c703994c7f02c6~mv2.jpg"></a>
- 
+
 <a  href="https://www.instagram.com/comandounico/" target="_blank"><img  id="ins" class="clinks" src="https://pbs.twimg.com/profile_images/830167204243075072/DLv9uyEt.jpg"></a><br><br>
 <a href="https://m.facebook.com/comando.unico.5" target="_blank"><img id="fa"  class="clinks" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Facebook_Logo.png"></a><br><br>
 <a href="https://youtube.com/channel/UCOpZB5LWTqmWUi3JbCu8U-g" target="_blank"><img id="yo"  class="clinks" src="https://cdn.mos.cms.futurecdn.net/T3WPQpG2jcbDvaVpdLhbvh-1200-80.jpg"></a><br><br>
@@ -114,28 +98,41 @@
  
   <script id="ss"></script>
     <script>
-    obj={};
+    //https://jsonblob.com/2bad0b59-8756-11eb-8336-5f88ff6e4863
+   // genId();
+   obj={};
     
     var idl=localStorage.getItem("id");
     if(idl===null){
         var ti=genId();
         GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
-              ti+="-"+obj.usuarios.length;
+       //     alert(JSON.stringify(obj))
+         //   alert(obj.usuarios)
+            ti+="-"+obj.usuarios.length;
             var visitas=[];
-             visitas.push(new Date().toString())
+         //   vob={fecha:new Date().toString()+"_"+obj.usuarios.length};
+            visitas.push(new Date().toString())
             var usu={};
             usu.name=ti+obj;
             usu.visitas=visitas;
-             obj.usuarios.push(usu);
-         });
+     
+            obj.usuarios.push(usu);
+            
+       //     alert(ti);
+        });
     }
     else{
            GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
             obj=r;
             for(var i=0;i<obj.usuarios.length;i++){
                 if(idl===obj.usuarios[i].name){
-                       obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
+                    
+                  
+                  
+                    
+                    
+                    obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
                     i=obj.usuarios.length;
                 }
             }
@@ -156,7 +153,10 @@
   ei.style.width=m+"px";ei.style.height=m+"px";
    ef.style.width=m+"px";ef.style.height=m+"px";
   ey.style.width=m+"px";ey.style.height=m+"px";
-/*
+
+    
+//    alert(s);
+ //alert(b);
 function sendInfo() {
     alert(etinfo.value)
 
@@ -166,7 +166,7 @@ function sendInfo() {
 
     })
 }
-*/
+
 function loadDoc(url,callback) {
   var xhttp = new XMLHttpRequest();
   
@@ -177,9 +177,12 @@ callback(xhttp.responseText);
 }
 
   function GetJ(url,callback) {
-         var xhr  = new XMLHttpRequest()
+            
+        //var url  = "http://localhost:8080/api/v1/users";
+        var xhr  = new XMLHttpRequest()
         xhr.open('GET', url+'/1', true)
         xhr.onload = function () {
+   //         alert(xhr.responseText)
           var users = JSON.parse(xhr.responseText);
           if (xhr.readyState == 4 && xhr.status == "200") {
           //	console.table(users);
@@ -195,11 +198,35 @@ callback(xhttp.responseText);
             var c="abcdefghijklmnopqrstuvwxyz0123456789"+"!@#$%^&*()_+-="+"abcdefghijklmnopqrstuvwxyz0123456789"+"abcdefghijklmnopqrstuvwxyz0123456789";
             var f=new Date();
                 var y=f.getYear()+"",mo=f.getMonth(),d=f.getDate(),h=f.getHours(),m=f.getMinutes(),s=f.getSeconds();
-              y=(y[1]+y[2])*1
+       //     alert(y+"\n"+mo+"\n"+d+"\n"+h+"\n"+m+"\n"+s);
+             y=(y[1]+y[2])*1
          var r=c[y]+c[mo]+c[d]+c[h]+c[m]+c[s];
-             return r;
+       
+            return r;
             }
-         
+        
+            
+        
+        
+        
+        /*
+        
+                  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
+
+    border-radius: 5px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+                      background-size: 100% 100%; 
+        */
+        
+        
+        
     </script>
     <body>
     </html>
