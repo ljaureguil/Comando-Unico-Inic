@@ -213,31 +213,17 @@ callback(xhttp.responseText);
        
             return r;
             }
+	    
 	    function plv(){
-		    setTimeout(function(){vid.src="";vid.src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4'},1000);
+		    setTimeout(function(){
+			    vid.src="";
+			    vid.src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4';
+		    vid.onload()=function(){vid.play()};
+		    
+		    },1000);
 	    }
         
             
-        
-        
-        
-        /*
-        
-                  background-image:
-	   -webkit-linear-gradient(-45deg, 
-	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
-	                           rgba(0,0, 0, .1) 66%, transparent 66%),
-	   -webkit-linear-gradient(top, 
-	                           rgba(255, 255, 255, .25), 
-	                           rgba(0, 0, 0, .25)),
-	   -webkit-linear-gradient(left,  rgb(6, 129, 23), rgb(29, 42, 233));
-
-    border-radius: 5px; 
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-                      background-size: 100% 100%; 
-        */
-        
-        
         
     </script>
     <body>
