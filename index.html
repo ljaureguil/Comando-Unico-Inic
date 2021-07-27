@@ -84,8 +84,34 @@
    top:0%;
    left: 0%;
 }
+#shr{
+     position: absolute;
+     top:1%;
+     left:10%;
+     width:80%;
+
+     border-radius: 200px;
+}
+#dqr{
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    top:5%;
+    left:5%;
+    background-color: black;
+    display: none;
+    border-radius: 30px;
+}
+#iqr{
+    position:absolute;
+    left: 5%;
+    top:20%;
+    width: 90%;
+    height: 60%;
+    
+}
     </style>
-  <video id="vid" ></video>
+  <video id="vid" src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4' onload="this.play()" autoplay></video>
 
     <div id="todo">
 
@@ -104,7 +130,11 @@
         <button onclick="einfo.style.display='none';econf.style.display='none'">Salir</button>"
     </div>
    </div>
- 
+   <button id="shr" onclick="shwQr(dqr.style.display)" >Qr Code . . . . Share link</button>
+   <div id="dqr"  onclick="this.style.display='none'">
+   <img id="iqr"  src='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'>
+  </div>
+   
   <script id="ss"></script>
     <script>
 	    linkQr='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'
@@ -217,13 +247,31 @@ callback(xhttp.responseText);
 	    
 	    function plv(){
 		    setTimeout(function(){
-			    vid.src="";
-			    vid.src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4';
-		    vid.onload()=function(){vid.play()};
+	//		    vid.src="";
+	//		    vid.src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4';
+	//	    vid.onload=function(){vid.play()};
 		    
 		    },1000);
 	    }
-        
+      
+        function shwQr(s){
+            if(s==="" || s==="none"){
+                dqr.style.display="block";
+                var l=document.createElement("textarea");
+                document.body.appendChild(l);
+              //  alert('1')
+                l.innerHTML=linkQr;
+             //   alert(l.value)
+                l.focus();
+                l.select();
+                document.execCommand("copy");
+             //   alert("2")
+                document.body.removeChild(l);
+                           
+                }
+            else{dqr.style.display="none"}
+          
+        }
             
         
     </script>
