@@ -82,6 +82,7 @@
         position:absolute;
         bottom:32%;
         left:1%;
+         font-weight:bold; 
         color: white;
 	font-size: 35px;
 	-webkit-text-stroke: 1px #F8F8F8;
@@ -125,7 +126,7 @@
     
 }
     </style>
-  <video id="vid" src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4' onload="this.play()" autoplay></video>
+  <video id="vid" src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4' onload="this.play()" onended="vidend()" autoplay></video>
 
     <div id="todo">
 
@@ -286,6 +287,11 @@ callback(xhttp.responseText);
             else{dqr.style.display="none"}
           
         }
+
+    function vidend(){
+        vid.currentTime=0;
+
+    }
             
         
     </script>
