@@ -28,7 +28,7 @@
     }
 
  .clinks{
-   position: absolute;
+  position: absolute;
   //    appearance: img;
       width: 180px;
       height:180px;
@@ -41,6 +41,32 @@
      border-style: groove;
       box-shadow:  -30px 30px  40px 1px rgba(70,70,80,.8);
        appearance: button;
+    }
+    .clinksp{
+  
+      width: 40px;
+      height:40px;
+     margin-left:12%;
+     margin-top: 3%;
+      font-size: 30px;
+      background: #201010;
+      color:white;
+      border-radius:10px;
+     border-width:4px;
+     border-style: groove;
+      box-shadow:  -30px 30px  40px 1px rgba(70,70,80,.8);
+       appearance: button;
+    }
+    #plataformas{
+      overflow: auto;
+      text-align: center;
+ position: absolute;
+ bottom:0%;
+ border-width: .5%;
+ border-radius: 3px;;
+ border-style: double;
+ width: 95%;
+ border-color: white;
     }
     #re{
       top:5%;
@@ -155,6 +181,12 @@
         <button id="bsend"  onclick="sendInfo();einfo.style.display='none';econf.style.display='none'">Mandar Informacion</button>
         <button onclick="einfo.style.display='none';econf.style.display='none'">Salir</button>"
     </div>
+    <div id="plataformas">
+     <a href="https://music.youtube.com/channel/UChzOFwlT-C8RXaWDHi-VfIw?feature=share" target="_blank"><img style="bakcground:white;"  class="clinksp" src="https://seeklogo.com/images/Y/youtube-music-logo-50422973B2-seeklogo.com.png"></a>
+     <a href="https://www.tiktok.com/discover/comando-unico?is_from_webapp=1&sender_device=pc" target="_blank"><img style="bakcground:white;"  class="clinksp" src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_960_720.png"></a>
+       <a href="https://music.apple.com/us/artist/comando-%C3%BAnico/1560050472" target="_blank"><img   class="clinksp" src="https://png.pngitem.com/pimgs/s/115-1154632_listen-on-apple-music-logo-png-transparent-png.png"></a>
+       <a href="https://open.spotify.com/artist/6TGJ5xpxuScTqrVLsUpELK?si=cg9Of2M9SD6bGZQTITR7Kw" target="_blank"><img   class="clinksp" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png"></a>
+     </div>
    </div>
    <button id="shr" onclick="shwQr(dqr.style.display)" >Qr Code . . . . Share link</button>
    <div id="dqr"  onclick="this.style.display='none'">
