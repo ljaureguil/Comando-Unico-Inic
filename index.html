@@ -45,10 +45,10 @@
     .clinksp{
         width: 40px;
       height:40px;
-     margin-left:5%;
-     margin-right: 5%;
- ////    margin-top: 1%;
- //    margin-bottom: 1%;
+     margin-left:4%;
+     margin-right: 4%;
+     margin-top: 1%;
+     margin-bottom: 1%;
       font-size: 30px;
       background: #201010;
       color:white;
@@ -59,15 +59,15 @@
       appearance: button;
     }
     #plataformas{
- //     overflow: auto;
+      overflow: auto;
       text-align: center;
  position: absolute;
  bottom:0%;
- //border-width: .5%;
- //border-radius: 3px;;
-// border-style: double;
- width: 100%;
-// border-color: white;
+ border-width: .5%;
+ border-radius: 3px;;
+ border-style: double;
+ width: 95%;
+ border-color: white;
     }
     #re{
       top:5%;
@@ -176,12 +176,7 @@
 <a  href="https://www.instagram.com/comandounico/" target="_blank"><img  id="ins" class="clinks" src="https://pbs.twimg.com/profile_images/830167204243075072/DLv9uyEt.jpg"></a><br><br>
 <a href="https://m.facebook.com/comando.unico.5" target="_blank"><img id="fa"  class="clinks" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Facebook_Logo.png"></a><br><br>
 <a href="https://youtube.com/channel/UCOpZB5LWTqmWUi3JbCu8U-g" target="_blank"><img id="yo"  class="clinks" src="https://cdn.mos.cms.futurecdn.net/T3WPQpG2jcbDvaVpdLhbvh-1200-80.jpg"></a><br><br>
- 
-<div id="manage" style="display:none">
-        <textarea id="tinfo" placeholder="Deja tu informacion aqui..."></textarea>
-        <button id="bsend"  onclick="sendInfo();einfo.style.display='none';econf.style.display='none'">Mandar Informacion</button>
-        <button onclick="einfo.style.display='none';econf.style.display='none'">Salir</button>"
-    </div>
+
     <div id="plataformas">
      <a href="https://music.youtube.com/channel/UChzOFwlT-C8RXaWDHi-VfIw?feature=share" target="_blank"><img style="bakcground:white;"  class="clinksp" src="https://seeklogo.com/images/Y/youtube-music-logo-50422973B2-seeklogo.com.png"></a>
      <a href="https://www.tiktok.com/discover/comando-unico?is_from_webapp=1&sender_device=pc" target="_blank"><img style="bakcground:white;"  class="clinksp" src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_960_720.png"></a>
@@ -200,39 +195,14 @@
   <script id="ss"></script>
     <script>
 	    linkQr='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'
-    obj={};
-    
-    var idl=localStorage.getItem("id");
-    if(idl===null){
-        var ti=genId();
-        GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
-            obj=r;
-             ti+="-"+obj.usuarios.length;
-            var visitas=[];
-             visitas.push(new Date().toString())
-            var usu={};
-            usu.name=ti+obj;
-            usu.visitas=visitas;
-     
-            obj.usuarios.push(usu);
-            
-       //     alert(ti);
-        });
-    }
-    else{
-           GetJ("https://jsonblob.com/api/2bad0b59-8756-11eb-8336-5f88ff6e4863",function(r){
-            obj=r;
-            for(var i=0;i<obj.usuarios.length;i++){
-                if(idl===obj.usuarios[i].name){
-                    obj.usuarios[i].visitas.push(new Date().toString()+"_"+usuarios[i].visitas.length);
-                    i=obj.usuarios.length;
-                }
-            }
-           
-        });     
-        
-    }
-    
+   
+    GetJ("http://jsonblob.com/api/1000459031692984320",function(ob){
+      ob.visitas.push(new Date().toString());
+    UpdateJ("http://jsonblob.com/api/1000459031692984320",function(){;})
+   
+    })
+
+   
     var h=window.innerHeight;
     var w=window.innerWidth;
     var s=4*w/100, c=8*w/100,a=(w-2*s-c)/2,b=(h-2*s-c)/2, m=a;
@@ -246,19 +216,6 @@
    ef.style.width=m+"px";ef.style.height=m+"px";
   ey.style.width=m+"px";ey.style.height=m+"px";
 
-    
-//    alert(s);
- //alert(b);
-function sendInfo() {
-    alert(etinfo.value)
-
-    GetJ("https://jsonblob.com/api/8f47c124-2c42-11eb-935b-f1e9d15679db",function(o){
-     alert(o)
-
-
-    })
-}
-
 function loadDoc(url,callback) {
   var xhttp = new XMLHttpRequest();
   
@@ -266,6 +223,23 @@ function loadDoc(url,callback) {
   xhttp.send();
 callback(xhttp.responseText);
 
+}
+function UpdateJ(url, ob, callback) {
+    
+    json = JSON.stringify(ob);
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", url + '/12', true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function() {
+        var users = JSON.parse(xhr.responseText);
+        if (xhr.readyState == 4 && xhr.status == "200") {
+            //  alert("Tu Forma ha sido Enviada");
+            if (callback != undefined) callback(users);
+        } else {
+            (users);
+        }
+    }
+    xhr.send(json);
 }
 
   function GetJ(url,callback) {
