@@ -47,7 +47,8 @@
       height:40px;
      margin-left:4%;
      margin-right: 4%;
-
+     margin-top: 1%;
+     margin-bottom: 1%;
       font-size: 30px;
       background: #201010;
       color:white;
@@ -193,8 +194,9 @@
 	    linkQr='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'
    
     GetJ("https://jsonblob.com/api/1000459031692984320",function(ob){
+    
       ob.visitas.push(new Date().toString());
-    UpdateJ("https://jsonblob.com/api/1000459031692984320",function(){;})
+    UpdateJ("https://jsonblob.com/api/1000459031692984320",ob,function(){;})
    
     })
 
