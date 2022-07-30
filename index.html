@@ -160,6 +160,17 @@
     bottom: 2%;;
     left:5%;
 }
+#players{
+  position: absolute;
+  text-align: center;
+  z-index: 100;
+  top:10%;
+  left: 5%;
+  background-color: white;
+  width: 90%;
+  height: 60%;
+  display: none;
+}
     </style>
   <video id="vid" src='https://video.wixstatic.com/video/4ee8f5_85c9f1f14c504820a5094a99fd42e50b/480p/mp4/file.mp4' onload="this.play()" onended="vidend()" autoplay></video>
 
@@ -179,7 +190,10 @@
      <a href="https://www.tiktok.com/discover/comando-unico?is_from_webapp=1&sender_device=pc" target="_blank"><img style="bakcground:white;"  class="clinksp" src="https://cdn.pixabay.com/photo/2021/01/30/06/42/tiktok-5962992_960_720.png"></a>
        <a href="https://music.apple.com/us/artist/comando-%C3%BAnico/1560050472" target="_blank"><img   class="clinksp" src="https://png.pngitem.com/pimgs/s/115-1154632_listen-on-apple-music-logo-png-transparent-png.png"></a>
        <a href="https://open.spotify.com/artist/6TGJ5xpxuScTqrVLsUpELK?si=cg9Of2M9SD6bGZQTITR7Kw" target="_blank"><img   class="clinksp" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png"></a>
-     </div>
+    <img   class="clinksp" src="https://cdn-icons-png.flaticon.com/512/1830/1830825.png" onclick="players.style.display='block'">
+  
+  
+      </div>
    </div>
    <button id="shr" onclick="shwQr(dqr.style.display)" >Qr Code . . . . Share link</button>
    <div id="dqr"  onclick="this.style.display='none'">
@@ -187,8 +201,12 @@
    <img id="iqr"  src='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'>
 <p id="cp">El link a sido copiado a to Clipboard</p>
 
+
 </div>
-   
+   <div id="players">
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6TGJ5xpxuScTqrVLsUpELK?utm_source=generator" padding="20px" width="95%" height="50%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<br><br><button onclick="players.style.display='none'">Close</button>
+</div>
   <script id="ss"></script>
     <script>
 	    linkQr='https://static.wixstatic.com/media/4ee8f5_266efd6229694280906ecb9452266a70~mv2.png'
